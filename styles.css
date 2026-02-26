@@ -1,0 +1,232 @@
+:root {
+  --bg: #0f1217;
+  --panel: #1b212b;
+  --text: #ecf1f9;
+  --muted: #a9b3c7;
+  --accent: #f0a500;
+  --danger: #ff6b6b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", sans-serif;
+  background: linear-gradient(120deg, #0b0e13, #121a24);
+  color: var(--text);
+}
+
+.hero {
+  padding: 2rem 1.5rem 1rem;
+  text-align: center;
+}
+
+.hero h1 {
+  margin-bottom: 0.25rem;
+}
+
+.hero p {
+  color: var(--muted);
+}
+
+.layout {
+  width: min(1200px, 94vw);
+  margin: 0 auto 2rem;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 1rem;
+}
+
+.panel {
+  background: rgba(27, 33, 43, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.grid-2 {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+input,
+select,
+textarea,
+button {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #121821;
+  color: var(--text);
+  padding: 0.6rem;
+  font: inherit;
+}
+
+button {
+  background: var(--accent);
+  border: none;
+  color: #1f1300;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.06);
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+}
+
+.stats {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.progress-wrap {
+  margin-top: 0.8rem;
+}
+
+.progress-title {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: #0d131d;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  transition: width 180ms ease;
+  background: linear-gradient(90deg, #6ad36a, #9bf097);
+}
+
+.filters {
+  margin: 1rem 0 0.7rem;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.toolbar button {
+  padding: 0.45rem 0.65rem;
+  font-size: 0.86rem;
+}
+
+.toolbar .danger,
+.actions .delete {
+  background: var(--danger);
+  color: #fff;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.task-item {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 0.8rem;
+  background: rgba(18, 24, 33, 0.75);
+}
+
+.task-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.task-top h3 {
+  margin: 0;
+  font-size: 1.06rem;
+}
+
+.meta {
+  margin: 0.5rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.objective {
+  margin: 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+}
+
+.priority[data-priority="高"] {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff9f9f;
+}
+
+.priority[data-priority="中"] {
+  background: rgba(240, 165, 0, 0.2);
+  color: #ffd46e;
+}
+
+.priority[data-priority="低"] {
+  background: rgba(89, 209, 133, 0.2);
+  color: #8de9af;
+}
+
+.actions {
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .toolbar {
+    justify-content: stretch;
+    flex-direction: column;
+  }
+}

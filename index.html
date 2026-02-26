@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EFT タスク管理アプリ</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>Escape From Tarkov タスク管理</h1>
+      <p>トレーダー別の進行状況と次レイドの優先タスクを、1画面で管理。</p>
+    </header>
+
+    <main class="layout">
+      <section class="panel form-panel">
+        <h2>タスクを追加</h2>
+        <form id="task-form">
+          <label>
+            クエスト名
+            <input id="questName" name="questName" maxlength="80" required placeholder="例: Debut" />
+          </label>
+
+          <label>
+            トレーダー
+            <select id="trader" name="trader" required>
+              <option value="">選択してください</option>
+              <option>Prapor</option>
+              <option>Therapist</option>
+              <option>Skier</option>
+              <option>Peacekeeper</option>
+              <option>Mechanic</option>
+              <option>Ragman</option>
+              <option>Jaeger</option>
+              <option>Fence</option>
+            </select>
+          </label>
+
+          <label>
+            マップ
+            <select id="map" name="map" required>
+              <option value="">選択してください</option>
+              <option>Customs</option>
+              <option>Woods</option>
+              <option>Factory</option>
+              <option>Shoreline</option>
+              <option>Interchange</option>
+              <option>Reserve</option>
+              <option>Lighthouse</option>
+              <option>Streets of Tarkov</option>
+              <option>The Lab</option>
+              <option>Ground Zero</option>
+            </select>
+          </label>
+
+          <label>
+            目的
+            <textarea id="objective" name="objective" rows="3" maxlength="220" required placeholder="例: Scavを5体キル、MP-133を2丁納品"></textarea>
+          </label>
+
+          <div class="grid-2">
+            <label>
+              優先度
+              <select id="priority" name="priority" required>
+                <option value="高">高</option>
+                <option value="中" selected>中</option>
+                <option value="低">低</option>
+              </select>
+            </label>
+
+            <label>
+              ステータス
+              <select id="status" name="status" required>
+                <option value="未着手" selected>未着手</option>
+                <option value="進行中">進行中</option>
+                <option value="完了">完了</option>
+              </select>
+            </label>
+          </div>
+
+          <button type="submit">保存</button>
+        </form>
+      </section>
+
+      <section class="panel list-panel">
+        <div class="list-header">
+          <h2>タスク一覧</h2>
+          <div class="stats" id="stats"></div>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-title">全体進捗</div>
+          <div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
+        </div>
+
+        <div class="filters">
+          <input id="search" placeholder="クエスト名 / 目的で検索" />
+          <select id="filterTrader">
+            <option value="all">全トレーダー</option>
+          </select>
+          <select id="filterMap">
+            <option value="all">全マップ</option>
+          </select>
+          <select id="filterStatus">
+            <option value="all">全ステータス</option>
+            <option value="未着手">未着手</option>
+            <option value="進行中">進行中</option>
+            <option value="完了">完了</option>
+          </select>
+        </div>
+
+        <div class="toolbar">
+          <button id="clear-completed" type="button">完了タスクを削除</button>
+          <button id="reset-all" type="button" class="danger">全タスクを初期化</button>
+        </div>
+
+        <ul id="task-list" class="task-list"></ul>
+      </section>
+    </main>
+
+    <template id="task-template">
+      <li class="task-item">
+        <div class="task-top">
+          <h3></h3>
+          <span class="badge priority"></span>
+        </div>
+        <p class="meta"></p>
+        <p class="objective"></p>
+        <div class="actions">
+          <select class="status-select">
+            <option value="未着手">未着手</option>
+            <option value="進行中">進行中</option>
+            <option value="完了">完了</option>
+          </select>
+          <button class="delete" type="button">削除</button>
+        </div>
+      </li>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
